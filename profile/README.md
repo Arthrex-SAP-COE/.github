@@ -2,7 +2,7 @@
 
 Welcome to the **Arthrex SAP COE GitHub Organization**.
 
-This space supports application lifecycle management (ALM), automation, and cloud-native development across SAP and non-SAP solutions.
+This space supports application lifecycle management (ALM), automation, and cloud-native development across SAP and non-SAP solutions, aligned with **ALM Engineering (Release Management)** governance.
 
 ---
 
@@ -25,87 +25,38 @@ flowchart LR
 
 ---
 
-## Purpose of This Organization
-
-- Central source of truth for application code
-- Controlled CI/CD for SAP BTP applications
-- Integration with SAP Cloud ALM (cALM)
-- Governance via ALM Engineering (Release Management)
-
----
-
-## Key Repository
+## Repository Overview
 
 ### BTP_CloudFoundry_Dev
-Main repository for deployable Cloud Foundry applications.
+Primary repository for Cloud Foundry applications.
 
-Use this repo when:
-- Your app is ready to move beyond Dev
-- You want promotion to Test/Prod
-- You need governance + traceability
+### ABAPGit_Backups
+Used for ABAPGit version control and backups.
 
----
-
-## Developer Workflow
-
-### 1. Develop in BTP Dev Space
-- Create space
-- Deploy using CF CLI (`cf push`)
-- Iterate freely
-
-### 2. Push to GitHub
-Repository:
-https://github.com/Arthrex-SAP-COE/BTP_CloudFoundry_Dev
-
-### 3. Create Feature in SAP Cloud ALM
-Include:
-- Purpose
-- Scope
-- Testing expectations
-
-### 4. ALM Engineering Promotion
-- Deploy to Test
-- Validate
-- Promote to Production
+### GRM-Python_Projects
+Internal Python tools and automation apps (non-SAP).
 
 ---
 
-## Responsibilities
+## gCTS Flow
 
-### Developers
-- Build and test in Dev space
-- Push stable code to GitHub
-- Create cALM Features
-
-### ALM Engineering
-- Review changes
-- Deploy to Test/Prod
-- Ensure governance and auditability
-
----
-
-## Access Requirements
-
-### SAP BTP
-- Cloud Foundry access
-- Dev space creation rights
-
-### GitHub
-- Access to Arthrex-SAP-COE org
-- Repo contributor access
-
-### SAP Cloud ALM
-- Feature creation access
+```mermaid
+flowchart LR
+    A[ABAP Dev] --> B[gCTS Commit]
+    B --> C[GitHub Repo]
+    C --> D[Transport Trigger]
+    D --> E[Import Target System]
+    E --> F[Validation]
+```
 
 ---
 
-## Best Practices
+## Workflow Summary
 
-- Keep apps modular
-- Use environment variables
-- Avoid hardcoding credentials
-- Document your app
-- Test thoroughly in Dev
+1. Develop in Dev Space  
+2. Push to GitHub  
+3. Create Feature in cALM  
+4. ALM Engineering promotes  
 
 ---
 
